@@ -2,160 +2,163 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, ChevronDown, MapPin } from 'lucide-react';
+import { ArrowRight, MapPin, Clapperboard, Users2, Trophy, Cpu } from 'lucide-react';
 
-const floatingKeywords = [
-  { text: 'AV Production', x: '8%', y: '20%', delay: 0 },
-  { text: 'Golf Tournaments', x: '75%', y: '15%', delay: 0.5 },
-  { text: 'Hospitality', x: '5%', y: '70%', delay: 1 },
-  { text: 'LED Walls', x: '80%', y: '65%', delay: 1.5 },
-  { text: 'Sports Events', x: '15%', y: '45%', delay: 0.8 },
-  { text: 'Technical Management', x: '68%', y: '40%', delay: 1.2 },
+const features = [
+  { icon: Clapperboard, title: 'Event Production',      subtitle: 'Stunning. Seamless. Scalable.' },
+  { icon: Users2,      title: 'Hospitality Services',   subtitle: 'Exceptional Guest Experiences.' },
+  { icon: Trophy,      title: 'Sports Tournaments',     subtitle: 'Organized for Success.' },
+  { icon: Cpu,         title: 'Technical Solutions',    subtitle: 'Innovative. Reliable. Professional.' },
 ];
+
+const ease = [0.22, 1, 0.36, 1] as const;
+const up = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.75, delay, ease },
+});
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      <div className="absolute inset-0">
+    <section className="relative flex flex-col min-h-screen overflow-hidden bg-midnight">
+
+      {/* ════════════════════════════════════════════
+          HERO BODY — split: text left / image right
+      ════════════════════════════════════════════ */}
+      <div className="relative flex flex-col lg:flex-row flex-1 overflow-hidden">
+
+        {/* ── Full-bleed background image (covers everything) ── */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="https://images.pexels.com/photos/37975405/pexels-photo-37975405.jpeg?auto=compress&cs=tinysrgb&w=1920"
-          alt="Premium event stage with spotlights"
-          className="w-full h-full object-cover"
+          src="/images/hero-event.png"
+          alt="Premium outdoor gala event with LED stage, spotlights and luxury dining"
+          className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
+          style={{ objectPosition: '55% center', filter: 'brightness(1.08) saturate(1.15)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-midnight/70 via-midnight/60 to-midnight" />
-        <div className="absolute inset-0 bg-gradient-to-r from-midnight/80 via-transparent to-midnight/40" />
-      </div>
 
-      {/* Animated light beams */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          className="absolute top-0 left-1/4 w-1 h-full bg-gradient-to-b from-champagne/20 to-transparent blur-2xl"
-          animate={{ opacity: [0.2, 0.5, 0.2] }}
-          transition={{ duration: 4, repeat: Infinity, delay: 0 }}
+        {/* Directional fade — only enough to keep left-side text legible; image fully visible on the right */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(to right, rgba(7,17,31,0.96) 0%, rgba(7,17,31,0.80) 22%, rgba(7,17,31,0.30) 42%, rgba(7,17,31,0.06) 62%, transparent 100%)',
+          }}
         />
-        <motion.div
-          className="absolute top-0 right-1/3 w-1 h-full bg-gradient-to-b from-champagne/15 to-transparent blur-2xl"
-          animate={{ opacity: [0.15, 0.4, 0.15] }}
-          transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+        {/* Very light top vignette — preserves the fairy-lights sky */}
+        <div
+          className="absolute inset-x-0 top-0 h-28 pointer-events-none"
+          style={{ background: 'linear-gradient(to bottom, rgba(7,17,31,0.40) 0%, transparent 100%)' }}
         />
-        <motion.div
-          className="absolute top-0 left-2/3 w-0.5 h-full bg-gradient-to-b from-champagne/10 to-transparent blur-xl"
-          animate={{ opacity: [0.1, 0.3, 0.1] }}
-          transition={{ duration: 6, repeat: Infinity, delay: 2 }}
+        {/* Thin bottom fade into the feature bar */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-20 pointer-events-none"
+          style={{ background: 'linear-gradient(to top, rgba(7,17,31,0.90) 0%, transparent 100%)' }}
         />
-      </div>
 
-      {/* Floating keywords */}
-      <div className="absolute inset-0 pointer-events-none hidden lg:block">
-        {floatingKeywords.map((kw, i) => (
+        {/* ── LEFT: Text content ── */}
+        <div className="relative z-10 flex flex-col justify-center pt-[88px] pb-10 px-6 sm:px-10 lg:pl-16 xl:pl-24 lg:w-[50%] xl:w-[46%] shrink-0 min-h-[85vh] lg:min-h-screen">
+
+          {/* UAE location badge */}
           <motion.div
-            key={i}
-            className="absolute"
-            style={{ left: kw.x, top: kw.y }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1 + kw.delay, duration: 0.8 }}
+            {...up(0)}
+            className="inline-flex items-center gap-2 self-start mb-5 px-4 py-1.5 rounded-full border border-champagne/40 bg-midnight/30 backdrop-blur-md"
           >
-            <motion.span
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, delay: kw.delay }}
-              className="text-xs font-medium text-champagne/40 tracking-wider whitespace-nowrap"
-            >
-              {kw.text}
-            </motion.span>
+            <MapPin className="w-3.5 h-3.5 text-champagne" />
+            <span className="text-xs font-medium text-champagne tracking-[0.14em]">Based in the UAE</span>
           </motion.div>
-        ))}
+
+          {/* Eyebrow with decorative dash */}
+          <motion.div {...up(0.1)} className="flex items-center gap-3 mb-6">
+            <span className="block w-8 h-px bg-champagne/55 shrink-0" />
+            <p className="text-[10.5px] font-semibold tracking-[0.3em] uppercase text-champagne/75">
+              Hospitality &bull; Events &bull; Technical Production
+            </p>
+          </motion.div>
+
+          {/* Main headline */}
+          <motion.h1
+            {...up(0.2)}
+            className="font-display font-semibold leading-[1.04] text-softwhite"
+            style={{ fontSize: 'clamp(2.75rem, 5.2vw, 5rem)' }}
+          >
+            We Bring
+            <span
+              className="block"
+              style={{
+                background: 'linear-gradient(90deg, #E8D19E 0%, #D6B477 45%, #B8985C 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              Extraordinary
+            </span>
+            Events to Life.
+          </motion.h1>
+
+          {/* Description */}
+          <motion.p
+            {...up(0.32)}
+            className="mt-6 text-[0.95rem] leading-relaxed text-slategray max-w-[400px]"
+          >
+            From world-class technical production and sports tournaments to exceptional hospitality
+            operations, we create seamless experiences across the UAE.
+          </motion.p>
+
+          {/* CTA row */}
+          <motion.div {...up(0.44)} className="mt-9 flex flex-wrap gap-4">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-champagne text-midnight text-sm font-semibold transition-all duration-300 hover:bg-champagne-light hover:shadow-[0_0_30px_rgba(214,180,119,0.4)]"
+            >
+              Explore Our Services <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/request-a-quote"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-champagne/55 text-champagne text-sm font-semibold transition-all duration-300 hover:bg-champagne hover:text-midnight hover:border-champagne"
+            >
+              Request a Quote
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Right column is pure image — no extra markup needed */}
       </div>
 
-      <div className="relative container-luxury z-10 pt-24 pb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-champagne/30 bg-midnight/30 backdrop-blur-sm mb-8"
-        >
-          <MapPin className="w-3.5 h-3.5 text-champagne" />
-          <span className="text-xs font-medium text-champagne tracking-wider">Based in the UAE</span>
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-xs font-semibold text-champagne tracking-[0.3em] uppercase mb-6"
-        >
-          Hospitality &bull; Events &bull; Technical Production
-        </motion.p>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-medium text-softwhite max-w-5xl leading-[1.05]"
-        >
-          We Bring{' '}
-          <span className="text-gradient-gold">Extraordinary</span>{' '}
-          Events to Life.
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-8 text-lg md:text-xl text-slategray max-w-2xl leading-relaxed"
-        >
-          From world-class technical production and sports tournaments to exceptional hospitality operations, we create
-          seamless experiences across the UAE.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4"
-        >
-          <Link href="/services" className="btn-primary">
-            Explore Our Services <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link href="/request-a-quote" className="btn-outline">
-            Request a Quote
-          </Link>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-16 flex flex-wrap gap-8 lg:gap-12"
-        >
-          {[
-            { label: 'Events', value: 'End-to-End' },
-            { label: 'Technical Production', value: 'Full-Service' },
-            { label: 'Hospitality Services', value: 'Professional Teams' },
-          ].map((stat, i) => (
-            <div key={i} className="border-l border-champagne/20 pl-4">
-              <p className="text-sm text-slategray">{stat.label}</p>
-              <p className="text-lg font-display font-medium text-champagne mt-1">{stat.value}</p>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-
+      {/* ════════════════════════════════════════════
+          BOTTOM FEATURE BAR
+      ════════════════════════════════════════════ */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.75, delay: 0.6, ease }}
+        className="relative z-10 border-t border-white/[0.07]"
+        style={{ background: 'rgba(6,11,18,0.93)', backdropFilter: 'blur(14px)' }}
       >
-        <span className="text-xs text-slategray tracking-wider uppercase">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <ChevronDown className="w-5 h-5 text-champagne" />
-        </motion.div>
+        <div className="container-luxury">
+          <div className="grid grid-cols-2 lg:grid-cols-4">
+            {features.map((feat, i) => (
+              <div
+                key={i}
+                className={`
+                  flex items-center gap-4 py-5 px-4 sm:px-6 lg:px-8 group cursor-default
+                  ${i < features.length - 1 ? 'border-r border-white/[0.07]' : ''}
+                `}
+              >
+                {/* Icon */}
+                <div className="shrink-0 w-11 h-11 rounded-xl border border-champagne/25 flex items-center justify-center group-hover:border-champagne/60 group-hover:bg-champagne/10 transition-all duration-300">
+                  <feat.icon className="w-5 h-5 text-champagne" strokeWidth={1.5} />
+                </div>
+                {/* Text */}
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-softwhite leading-snug">{feat.title}</p>
+                  <p className="text-[11px] text-slategray mt-0.5 leading-snug">{feat.subtitle}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </motion.div>
     </section>
   );
