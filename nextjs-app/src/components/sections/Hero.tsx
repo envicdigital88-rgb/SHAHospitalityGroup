@@ -37,9 +37,12 @@ export function Hero() {
           style={{ objectPosition: '55% center', filter: 'brightness(1.08) saturate(1.15)' }}
         />
 
-        {/* Directional fade — only enough to keep left-side text legible; image fully visible on the right */}
+        {/* Mobile: Strong dark overlay to keep text readable. Desktop: Hidden */}
+        <div className="absolute inset-0 pointer-events-none bg-midnight/80 lg:hidden" />
+        
+        {/* Desktop: Directional fade — only enough to keep left-side text legible; image fully visible on the right */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none hidden lg:block"
           style={{
             background:
               'linear-gradient(to right, rgba(7,17,31,0.96) 0%, rgba(7,17,31,0.80) 22%, rgba(7,17,31,0.30) 42%, rgba(7,17,31,0.06) 62%, transparent 100%)',
@@ -127,23 +130,23 @@ export function Hero() {
       </div>
 
       {/* ════════════════════════════════════════════
-          BOTTOM FEATURE BAR
+          BOTTOM FEATURE BAR (Responsive Cards)
       ════════════════════════════════════════════ */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.75, delay: 0.6, ease }}
-        className="relative z-10 border-t border-white/[0.07]"
+        className="relative z-10 py-6 lg:py-0 lg:border-t lg:border-white/[0.07]"
         style={{ background: 'rgba(6,11,18,0.93)', backdropFilter: 'blur(14px)' }}
       >
         <div className="container-luxury">
-          <div className="grid grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0">
             {features.map((feat, i) => (
               <div
                 key={i}
                 className={`
-                  flex items-center gap-4 py-5 px-4 sm:px-6 lg:px-8 group cursor-default
-                  ${i < features.length - 1 ? 'border-r border-white/[0.07]' : ''}
+                  flex items-center gap-4 py-4 px-5 rounded-2xl lg:rounded-none border border-white/5 lg:border-0 lg:py-5 lg:px-4 xl:px-8 group cursor-default bg-white/[0.02] lg:bg-transparent
+                  ${i < features.length - 1 ? 'lg:border-r lg:border-white/[0.07]' : ''}
                 `}
               >
                 {/* Icon */}

@@ -19,8 +19,8 @@ export function Footer() {
                 <span className="font-display text-champagne text-xl font-bold">E</span>
               </div>
               <div>
-                <p className="font-display text-lg font-semibold text-softwhite leading-none">Eventra</p>
-                <p className="text-[10px] text-slategray tracking-[0.2em] uppercase mt-1">Hospitality & Events</p>
+                <p className="font-display text-lg font-semibold text-softwhite leading-none">SHA</p>
+                <p className="text-[9px] font-medium tracking-[0.2em] text-champagne uppercase">Hospitality Group</p>
               </div>
             </Link>
             <p className="text-sm text-slategray leading-relaxed max-w-xs">
@@ -89,11 +89,11 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 text-sm text-slategray">
                 <Phone className="w-4 h-4 text-champagne mt-0.5 shrink-0" />
-                <span>[Phone Number]</span>
+                <span>+971 55 403 0577</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-slategray">
                 <Mail className="w-4 h-4 text-champagne mt-0.5 shrink-0" />
-                <span>[Email Address]</span>
+                <span>sales@shahospitalitygroup.com</span>
               </li>
             </ul>
             <Link href="/request-a-quote" className="btn-outline mt-6 !py-2.5 !px-5 text-xs">
@@ -104,7 +104,7 @@ export function Footer() {
 
         <div className="pt-8 border-t border-champagne/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slategray">
-            &copy; {new Date().getFullYear()} Eventra Hospitality & Events. All rights reserved.
+            &copy; {new Date().getFullYear()} SHA Hospitality Group. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-xs text-slategray hover:text-champagne transition-colors">Privacy Policy</a>

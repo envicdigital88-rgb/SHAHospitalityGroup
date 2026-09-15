@@ -10,12 +10,12 @@ export function UAEPresence() {
       <div className="absolute inset-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="https://images.pexels.com/photos/1381722/pexels-photo-1381722.jpeg?auto=compress&cs=tinysrgb&w=1920"
-          alt="Dubai skyline at night"
-          className="w-full h-full object-cover opacity-20"
+          src="/images/uae-bg.jpg"
+          alt="UAE Operations Background"
+          className="w-full h-full object-cover opacity-100"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-midnight via-midnight/90 to-midnight/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-midnight/90 via-midnight/50 to-transparent" />
       </div>
 
       <div className="relative container-luxury">

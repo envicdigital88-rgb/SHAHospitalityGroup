@@ -4,8 +4,8 @@ import { Layout } from "@/components/layout/Layout";
 
 export const metadata: Metadata = {
   title: {
-    default: "Eventra Hospitality & Events | UAE-Based Event Management",
-    template: "%s | Eventra Hospitality & Events",
+    default: "SHA Hospitality Group | UAE-Based Event Management",
+    template: "%s | SHA Hospitality Group",
   },
   description:
     "A UAE-based hospitality and event management company specializing in technical production, sports tournaments, golf events, and corporate training.",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_AE",
-    siteName: "Eventra Hospitality & Events",
+    siteName: "SHA Hospitality Group",
   },
 };
 

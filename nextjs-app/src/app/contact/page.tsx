@@ -22,8 +22,8 @@ export default function Contact() {
 
   const contactInfo = [
     { icon: MapPin, label: 'Office Address', value: '[Address — UAE]' },
-    { icon: Phone, label: 'Phone', value: '[Phone Number]' },
-    { icon: Mail, label: 'Email', value: '[Email Address]' },
+    { icon: Phone, label: 'Phone', value: '+971 55 403 0577' },
+    { icon: Mail, label: 'Email', value: 'sales@shahospitalitygroup.com' },
     { icon: Clock, label: 'Business Hours', value: '[Hours — to be provided]' },
   ];
 

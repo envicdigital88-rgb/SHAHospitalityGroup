@@ -48,8 +48,8 @@ export function Header() {
               <span className="font-display text-champagne text-xl font-bold">E</span>
             </div>
             <div className="hidden sm:block">
-              <p className="font-display text-lg font-semibold text-softwhite leading-none">Eventra</p>
-              <p className="text-[10px] text-slategray tracking-[0.2em] uppercase">Hospitality & Events</p>
+              <p className="font-display text-lg font-semibold text-softwhite leading-none">SHA</p>
+              <p className="text-[9px] font-medium tracking-[0.2em] text-champagne uppercase mt-0.5">Hospitality Group</p>
             </div>
           </Link>
 
