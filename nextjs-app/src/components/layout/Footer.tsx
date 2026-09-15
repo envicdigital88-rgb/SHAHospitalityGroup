@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Instagram, Linkedin, Facebook, Twitter, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Camera, Briefcase, Users2, MessageCircle, ArrowRight } from 'lucide-react';
 import { navLinks } from '@/lib/navigation';
 import { services } from '@/lib/services';
 
@@ -28,7 +28,7 @@ export function Footer() {
               tournaments, and exceptional guest experiences.
             </p>
             <div className="flex gap-3 mt-6">
-              {[Instagram, Linkedin, Facebook, Twitter].map((Icon, i) => (
+              {[Camera, Briefcase, Users2, MessageCircle].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"
